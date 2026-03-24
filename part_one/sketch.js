@@ -67,19 +67,15 @@ function setup() {
   background(255);
 
   // noLoop()
-
-  curve = new Curve();
 }
 
 function draw() {
-
-  //curve.render();
-  // mouse.act()
   // floating towards mouse position
   centerX += (mouseX - centerX) * 0.01;
   centerY += (mouseY - centerY) * 0.01;
 
   // calculate new points
+  //for every loop it moves the points at random on the x(right, left)axis and on the y(up, down)axis
   for (let i = 0; i < formResolution; i++) {
     x[i] += random(-stepSize, stepSize);
     y[i] += random(-stepSize, stepSize);
@@ -95,6 +91,11 @@ function draw() {
   case 1: // circle
     beginShape();
     // start controlpoint
+
+    //use the last point as an extra curveVertex
+    //how curveVetex works is by looking at the neighbours because it needs to know where it came from.
+    //so point 14(ghost point) is important inorder for it to curve. We give the last point before we start the shape
+    //the + centerX shifts the point to the right position
     curveVertex(x[formResolution - 1] + centerX, y[formResolution - 1] + centerY);
 
     // only these points are drawn

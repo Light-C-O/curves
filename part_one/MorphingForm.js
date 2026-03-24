@@ -1,7 +1,9 @@
-class Curve {
+class MorphingForm {
+    //what it remembers
     constructor (){
+        this.formResolution = 15;
+        this.initRadius = 150;
         this.stepSize = 2;
-        this.distortionFactor = 1;
         this.centerX;
         this.centerY;
         this.x = [];
@@ -11,8 +13,16 @@ class Curve {
         this.freeze = false;
         this.drawMode = 1;
     }
+
+    //methods - what it does
+    
     render (){
-        // floating towards mouse position
+       
+    }
+
+
+    draw(){
+         // floating towards mouse position
         this.centerX += (mouseX - centerX) * 0.01;
         this.centerY += (mouseY - centerY) * 0.01;
 
