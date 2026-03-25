@@ -130,10 +130,12 @@ function mousePressed() {
   centerX = mouseX;
   centerY = mouseY;
 
+  let angle;
+  let radius;
   switch (drawMode) {
   case 1: // circle
-    let angle = radians(360 / formResolution);
-    let radius = initRadius * random(0.5, 1);
+    angle = radians(360 / formResolution);
+    radius = initRadius * random(0.5, 1);
     for (let i = 0; i < formResolution; i++) {
       x[i] = cos(angle * i) * radius;
       y[i] = sin(angle * i) * radius;
