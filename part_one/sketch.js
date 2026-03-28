@@ -37,8 +37,9 @@
 
 
 let distortionFactor = 1;
-
 let freeze = false;
+
+let thickness = 0.75;
 
 let form;
 
@@ -46,16 +47,20 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   stroke(0, 50);
-  strokeWeight(0.75);
+  strokeWeight(thickness);
   background(255);
+
+  //create a class
   form = new MorphingForm(width/2, height/2)
 
 }
 
+//to draw the shapes
 function draw() {
   form.render()
 }
 
+//what happens when the mouse gets pressed
 function mousePressed() {
   form.reset(mouseX, mouseY)
 }
