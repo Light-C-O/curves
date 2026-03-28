@@ -41,7 +41,8 @@ let freeze = false;
 
 let thickness = 0.75;
 
-let form;
+let form1;
+//let form2;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -51,31 +52,37 @@ function setup() {
   background(255);
 
   //create a class
-  form = new MorphingForm(width/2, height/2)
+  form1 = new MorphingForm(width/2, height/2)
+  //form2 = new MorphingForm(width/4, height/4)
 
 }
 
 //to draw the shapes
 function draw() {
-  form.render()
+  form1.render()
+  //form2.render()
 }
 
 //what happens when the mouse gets pressed
 function mousePressed() {
-  form.reset(mouseX, mouseY)
+  form1.reset(mouseX, mouseY)
+  //form2.reset(mouseX, mouseY)
 }
 
 function keyReleased() {
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
   if (keyCode == DELETE || keyCode == BACKSPACE) background(255);
-  if (key == '1') form.filled = false;
-  if (key == '2') form.filled = true
-  if (key == '3') form.drawMode = 1;
-  if (key == '4') form.drawMode = 2;
+  if (key == '1') {form1.filled = false; form2.filled = false;}
+  if (key == '2') {form1.filled = true; form2.filled = true;}
+  if (key == '3') {form1.drawMode = 1; form2.drawMode = 1;}
+  if (key == '4') {form1.drawMode = 2; form2.drawMode = 2;}
 
-  if (keyCode == UP_ARROW) form.stepSize++;
-  if (keyCode == DOWN_ARROW) form.stepSize--;
-  form.stepSize = max(form.stepSize, 1);
+  if (keyCode == UP_ARROW) {form1.stepSize++; form2.stepSize++;}
+  if (keyCode == DOWN_ARROW) {form1.stepSize--; form2.stepSize++;}
+
+
+  form1.stepSize = max(form1.stepSize, 1);
+  //form2.stepSize = max(form2.stepSize, 1);
 
   // pause/play draw loop
   if (key == 'f' || key == 'F') freeze = !freeze;
